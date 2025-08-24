@@ -120,6 +120,11 @@ export default function AdminPage() {
                 <Settings className="w-4 h-4 mr-2" />
                 Settings
               </Button>
+              <Link href="/login">
+                <Button variant="ghost" size="sm">
+                  Logout
+                </Button>
+              </Link>
               <Avatar className="w-8 h-8">
                 <AvatarImage src="/admin-avatar.png" />
                 <AvatarFallback>AD</AvatarFallback>
@@ -264,7 +269,7 @@ export default function AdminPage() {
                       </Avatar>
                       <div>
                         <p className="font-medium text-gray-900">{user.name}</p>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-sm text-gray-600">
                           {user.email} • {user.role}
                         </p>
                       </div>

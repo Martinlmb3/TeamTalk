@@ -96,42 +96,34 @@ export default function TeamChatPage({ params }: { params: { id: string } }) {
 
   return (
     <div className="h-screen bg-gray-50 flex flex-col">
-      {/* Header */}
-      <header className="bg-white border-b flex-shrink-0">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-4">
-              <Link href={`/team/${params.id}`}>
-                <Button variant="ghost" size="sm">
-                  <ArrowLeft className="w-4 h-4 mr-2" />
-                  Back to Team
-                </Button>
-              </Link>
-              <div className="flex items-center space-x-3">
-                <Avatar className="w-8 h-8">
-                  <AvatarImage src="/generic-soccer-team-logo.png" />
-                  <AvatarFallback>ET</AvatarFallback>
-                </Avatar>
-                <div>
-                  <h1 className="font-semibold text-gray-900">Eagles Soccer Team</h1>
-                  <p className="text-sm text-gray-500">{mockOnlineMembers.length} members online</p>
-                </div>
+      {/* Chat Header */}
+      <div className="bg-white border-b flex-shrink-0 px-4 py-3">
+        <div className="flex justify-between items-center">
+          <div className="flex items-center space-x-4">
+            <Link href={`/team/${params.id}`}>
+              <Button variant="ghost" size="sm">
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Back to Team
+              </Button>
+            </Link>
+            <div className="flex items-center space-x-3">
+              <Avatar className="w-8 h-8">
+                <AvatarImage src="/generic-soccer-team-logo.png" />
+                <AvatarFallback>ET</AvatarFallback>
+              </Avatar>
+              <div>
+                <h1 className="font-semibold text-gray-900">Eagles Soccer Team</h1>
+                <p className="text-sm text-gray-500">{mockOnlineMembers.length} members online</p>
               </div>
             </div>
-
-            <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="sm">
-                <Settings className="w-4 h-4 mr-2" />
-                Chat Settings
-              </Button>
-              <Avatar className="w-8 h-8">
-                <AvatarImage src="/diverse-user-avatars.png" />
-                <AvatarFallback>JD</AvatarFallback>
-              </Avatar>
-            </div>
           </div>
+
+          <Button variant="ghost" size="sm">
+            <Settings className="w-4 h-4 mr-2" />
+            Chat Settings
+          </Button>
         </div>
-      </header>
+      </div>
 
       <div className="flex-1 flex overflow-hidden">
         {/* Main Chat Area */}

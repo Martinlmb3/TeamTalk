@@ -34,12 +34,16 @@ export default function HomePage() {
             </div>
 
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="sm">
-                Log In
-              </Button>
-              <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
-                Sign Up
-              </Button>
+              <Link href="/login">
+                <Button variant="ghost" size="sm">
+                  Log In
+                </Button>
+              </Link>
+              <Link href="/signup">
+                <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
+                  Sign Up
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -66,16 +70,20 @@ export default function HomePage() {
             their goals. Sign up today and experience seamless team communication.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-3 shadow-lg">
-              Sign Up
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="text-lg px-8 py-3 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20"
-            >
-              Log In
-            </Button>
+            <Link href="/signup">
+              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-3 shadow-lg">
+                Sign Up
+              </Button>
+            </Link>
+            <Link href="/login">
+              <Button
+                variant="outline"
+                size="lg"
+                className="text-lg px-8 py-3 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20"
+              >
+                Log In
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -143,9 +151,11 @@ export default function HomePage() {
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
             Join TeamTalk today and transform the way your team connects, communicates, and collaborates.
           </p>
-          <Button size="lg" variant="secondary" className="bg-white text-blue-600 hover:bg-gray-50 text-lg px-8 py-3">
-            Get Started
-          </Button>
+          <Link href="/signup">
+            <Button size="lg" variant="secondary" className="bg-white text-blue-600 hover:bg-gray-50 text-lg px-8 py-3">
+              Get Started
+            </Button>
+          </Link>
         </div>
       </section>
 
