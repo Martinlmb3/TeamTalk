@@ -1,0 +1,6 @@
+@TeamTalkApi_HostAddress = http://localhost:5264
+
+GET {{TeamTalkApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
