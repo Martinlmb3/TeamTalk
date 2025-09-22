@@ -6,10 +6,10 @@ namespace TeamTalk.Core.Entities;
 public class Training
 {
     [Key]
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
     [ForeignKey("Team")]
-    public int TeamId { get; set; }
+    public Guid TeamId { get; set; }
 
     [MaxLength(200)]
     public string? Location { get; set; }
@@ -19,7 +19,7 @@ public class Training
     public DateTime EndTime { get; set; }
 
     [ForeignKey("Coach")]
-    public int CoachId { get; set; }
+    public Guid CoachId { get; set; }
 
     public string? Notes { get; set; }
 

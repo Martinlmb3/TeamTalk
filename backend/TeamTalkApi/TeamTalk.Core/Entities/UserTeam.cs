@@ -6,17 +6,17 @@ namespace TeamTalk.Core.Entities;
 public class UserTeam
 {
     [Key]
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
     [ForeignKey("User")]
-    public int UserId { get; set; }
+    public Guid UserId { get; set; }
 
     [ForeignKey("Team")]
-    public int TeamId { get; set; }
+    public Guid TeamId { get; set; }
 
     [Required]
     [MaxLength(50)]
-    public string Role { get; set; } = "member"; // e.g., "member", "coach", "admin"
+    public Boolean Role { get; set; }
 
     public DateTime JoinedAt { get; set; } = DateTime.UtcNow;
 

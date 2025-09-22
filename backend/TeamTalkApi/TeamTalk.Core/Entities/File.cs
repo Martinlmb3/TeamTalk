@@ -6,13 +6,13 @@ namespace TeamTalk.Core.Entities;
 public class File
 {
     [Key]
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
     [ForeignKey("Uploader")]
-    public int UploaderId { get; set; }
+    public Guid UploaderId { get; set; }
 
     [ForeignKey("Team")]
-    public int? TeamId { get; set; } // Optional FK
+    public Guid? TeamId { get; set; } // Optional FK
 
     [Required]
     [MaxLength(255)]

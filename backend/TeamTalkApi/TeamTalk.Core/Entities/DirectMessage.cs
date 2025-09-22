@@ -6,13 +6,13 @@ namespace TeamTalk.Core.Entities;
 public class DirectMessage
 {
     [Key]
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
     [ForeignKey("Sender")]
-    public int SenderId { get; set; }
+    public Guid SenderId { get; set; }
 
     [ForeignKey("Receiver")]
-    public int ReceiverId { get; set; }
+    public Guid ReceiverId { get; set; }
 
     [Required]
     public string Content { get; set; } = string.Empty;

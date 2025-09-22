@@ -6,10 +6,10 @@ namespace TeamTalk.Core.Entities;
 public class Schedule
 {
     [Key]
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
     [ForeignKey("Team")]
-    public int TeamId { get; set; }
+    public Guid TeamId { get; set; }
 
     [Required]
     [MaxLength(200)]

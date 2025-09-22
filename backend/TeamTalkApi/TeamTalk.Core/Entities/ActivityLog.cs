@@ -1,19 +1,18 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
+using TeamTalkApi.TeamTalk.Core.Enums;
 namespace TeamTalk.Core.Entities;
 
 public class ActivityLog
 {
     [Key]
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
     [ForeignKey("User")]
-    public int UserId { get; set; }
+    public Guid UserId { get; set; }
 
     [Required]
-    [MaxLength(100)]
-    public string Action { get; set; } = string.Empty; // e.g., "sent message", "joined team", "uploaded file"
+    public ActivityLogAction Action { get; set; }
 
     public DateTime Timestamp { get; set; } = DateTime.UtcNow;
 
