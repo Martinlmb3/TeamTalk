@@ -34,15 +34,15 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-background to-muted flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <span className="text-white font-bold text-2xl">TT</span>
+          <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <span className="text-primary-foreground font-bold text-2xl">TT</span>
           </div>
-          <h1 className="text-2xl font-bold text-gray-900">Join TeamTalk</h1>
-          <p className="text-gray-600 mt-2">Create your account to get started</p>
+          <h1 className="text-2xl font-bold text-foreground">Join TeamTalk</h1>
+          <p className="text-muted-foreground mt-2">Create your account to get started</p>
         </div>
 
         {/* Signup Form */}
@@ -96,7 +96,6 @@ export default function SignupPage() {
                   <SelectContent>
                     <SelectItem value="coach">Coach</SelectItem>
                     <SelectItem value="player">Player</SelectItem>
-                    <SelectItem value="parent">Parent</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -151,25 +150,25 @@ export default function SignupPage() {
                 <input type="checkbox" id="terms" className="rounded" required />
                 <Label htmlFor="terms" className="text-sm">
                   I agree to the{" "}
-                  <Link href="/terms" className="text-blue-600 hover:underline">
+                  <Link href="/terms" className="text-primary hover:underline">
                     Terms of Service
                   </Link>{" "}
                   and{" "}
-                  <Link href="/privacy" className="text-blue-600 hover:underline">
+                  <Link href="/privacy" className="text-primary hover:underline">
                     Privacy Policy
                   </Link>
                 </Label>
               </div>
 
-              <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700">
+              <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
                 Create Account
               </Button>
             </form>
 
             <div className="mt-6 text-center">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-muted-foreground">
                 Already have an account?{" "}
-                <Link href="/login" className="text-blue-600 hover:underline font-medium">
+                <Link href="/login" className="text-primary hover:underline font-medium">
                   Sign in
                 </Link>
               </p>

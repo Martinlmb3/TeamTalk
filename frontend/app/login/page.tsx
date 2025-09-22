@@ -22,15 +22,15 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-background to-muted flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <span className="text-white font-bold text-2xl">TT</span>
+          <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <span className="text-primary-foreground font-bold text-2xl">TT</span>
           </div>
-          <h1 className="text-2xl font-bold text-gray-900">Welcome back to TeamTalk</h1>
-          <p className="text-gray-600 mt-2">Sign in to your account to continue</p>
+          <h1 className="text-2xl font-bold text-foreground">Welcome back to TeamTalk</h1>
+          <p className="text-muted-foreground mt-2">Sign in to your account to continue</p>
         </div>
 
         {/* Login Form */}
@@ -82,20 +82,20 @@ export default function LoginPage() {
                     Remember me
                   </Label>
                 </div>
-                <Link href="/forgot-password" className="text-sm text-blue-600 hover:underline">
+                <Link href="/forgot-password" className="text-sm text-primary hover:underline">
                   Forgot password?
                 </Link>
               </div>
 
-              <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700">
+              <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
                 Sign In
               </Button>
             </form>
 
             <div className="mt-6 text-center">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-muted-foreground">
                 Don't have an account?{" "}
-                <Link href="/signup" className="text-blue-600 hover:underline font-medium">
+                <Link href="/signup" className="text-primary hover:underline font-medium">
                   Sign up
                 </Link>
               </p>

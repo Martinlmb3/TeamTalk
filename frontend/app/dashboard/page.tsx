@@ -41,7 +41,7 @@ const mockTeams = [
 
 export default function DashboardPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-muted/30">
       {/* Header */}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -68,8 +68,8 @@ export default function DashboardPage() {
           <Card>
             <CardContent className="p-6">
               <div className="flex items-center">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <Users className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                  <Users className="w-6 h-6 text-primary" />
                 </div>
                 <div className="ml-4">
                   <p className="text-sm font-medium text-gray-600">Total Teams</p>
@@ -96,8 +96,8 @@ export default function DashboardPage() {
           <Card>
             <CardContent className="p-6">
               <div className="flex items-center">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                  <Users className="w-6 h-6 text-purple-600" />
+                <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
+                  <Users className="w-6 h-6 text-purple-600 dark:text-purple-400" />
                 </div>
                 <div className="ml-4">
                   <p className="text-sm font-medium text-gray-600">Total Members</p>
@@ -110,8 +110,8 @@ export default function DashboardPage() {
 
         {/* Teams Section */}
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-900">Your Teams</h2>
-          <Button className="bg-blue-600 hover:bg-blue-700">
+          <h2 className="text-2xl font-bold text-foreground">Your Teams</h2>
+          <Button className="bg-primary hover:bg-primary/90">
             <Plus className="w-4 h-4 mr-2" />
             Create Team
           </Button>
@@ -156,7 +156,7 @@ export default function DashboardPage() {
 
                   <div className="pt-3 border-t">
                     <Link href={`/team/${team.id}`}>
-                      <Button className="w-full bg-blue-600 hover:bg-blue-700">
+                      <Button className="w-full bg-primary hover:bg-primary/90">
                         <MessageCircle className="w-4 h-4 mr-2" />
                         Open Team Chat
                       </Button>
