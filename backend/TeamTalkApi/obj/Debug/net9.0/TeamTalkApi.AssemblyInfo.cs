@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TeamTalkApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e12b9a40f8f1852d52a7cc04b06ffc4782b74753")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bb4d05dcb5a878c727201a031bb481c99b26b446")]
 [assembly: System.Reflection.AssemblyProductAttribute("TeamTalkApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TeamTalkApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
