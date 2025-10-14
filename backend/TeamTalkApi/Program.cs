@@ -10,6 +10,10 @@ using TeamTalkApi.Infrastructure.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.Facebook;
+using DotNetEnv;
+
+// Load environment variables from .env file
+Env.Load();
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,15 +56,25 @@ builder.Services.AddAuthentication(options =>
 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
 .AddGoogle(GoogleDefaults.AuthenticationScheme, googleOptions =>
 {
-    googleOptions.ClientId = builder.Configuration["Authentication:Google:ClientId"] ?? "";
-    googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"] ?? "";
+    // Read from environment variables first, fallback to configuration
+    googleOptions.ClientId = Environment.GetEnvironmentVariable("GOOGLE_CLIENT_ID")
+        ?? builder.Configuration["Authentication:Google:ClientId"]
+        ?? throw new InvalidOperationException("Google Client ID is not configured");
+    googleOptions.ClientSecret = Environment.GetEnvironmentVariable("GOOGLE_CLIENT_SECRET")
+        ?? builder.Configuration["Authentication:Google:ClientSecret"]
+        ?? throw new InvalidOperationException("Google Client Secret is not configured");
     googleOptions.CallbackPath = "/api/auth/google/callback";
     googleOptions.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
 })
 .AddFacebook(FacebookDefaults.AuthenticationScheme, facebookOptions =>
 {
-    facebookOptions.AppId = builder.Configuration["Authentication:Facebook:AppId"] ?? "";
-    facebookOptions.AppSecret = builder.Configuration["Authentication:Facebook:AppSecret"] ?? "";
+    // Read from environment variables first, fallback to configuration
+    facebookOptions.AppId = Environment.GetEnvironmentVariable("FACEBOOK_APP_ID")
+        ?? builder.Configuration["Authentication:Facebook:AppId"]
+        ?? throw new InvalidOperationException("Facebook App ID is not configured");
+    facebookOptions.AppSecret = Environment.GetEnvironmentVariable("FACEBOOK_APP_SECRET")
+        ?? builder.Configuration["Authentication:Facebook:AppSecret"]
+        ?? throw new InvalidOperationException("Facebook App Secret is not configured");
     facebookOptions.CallbackPath = "/api/auth/facebook/callback";
     facebookOptions.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
 });
