@@ -48,3 +48,8 @@ Thumbs.db
 # Temporary files
 *.swp
 *.swo
+
+# Documentation guides
+OAUTH_SETUP_GUIDE.md
+NEXTJS_SUSPENSE_ERROR_GUIDE.md
+THEME_AWARE_LOGOS.md

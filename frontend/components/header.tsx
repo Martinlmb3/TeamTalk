@@ -1,12 +1,21 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { usePathname } from "next/navigation"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { useTheme } from "next-themes"
+import { useEffect, useState } from "react"
 
 export function Header() {
   const pathname = usePathname()
+  const { theme, systemTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   // Don't show header on landing page
   if (pathname === "/") return null
@@ -17,15 +26,18 @@ export function Header() {
   const isSchedule = pathname.startsWith("/schedule")
   const isFiles = pathname.startsWith("/files")
 
+  const currentTheme = theme === "system" ? systemTheme : theme
+  const logoSrc = currentTheme === "dark"
+    ? "/TeamTalk - logo - darkMode.svg"
+    : "/TeamTalk - logo - lightMode.svg"
+
   return (
     <header className="bg-background border-b border-border sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link href="/dashboard" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">TT</span>
-              </div>
+              {mounted && <Image src={logoSrc} alt="TeamTalk Logo" width={32} height={32} className="w-8 h-8" />}
               <span className="text-xl font-bold text-foreground">TeamTalk</span>
             </Link>
           </div>

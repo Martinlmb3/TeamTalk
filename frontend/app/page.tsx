@@ -1,9 +1,27 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Users, MessageCircle, Calendar } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
+import { useTheme } from "next-themes"
+import { useEffect, useState } from "react"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export default function HomePage() {
+  const { theme, systemTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const currentTheme = theme === "system" ? systemTheme : theme
+  const logoSrc = currentTheme === "dark"
+    ? "/TeamTalk - logo - darkMode.svg"
+    : "/TeamTalk - logo - lightMode.svg"
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
@@ -12,9 +30,7 @@ export default function HomePage() {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0 flex items-center">
-                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold text-sm">TT</span>
-                </div>
+                {mounted && <Image src={logoSrc} alt="TeamTalk Logo" width={32} height={32} className="w-8 h-8" />}
                 <span className="ml-2 text-xl font-bold text-foreground">TeamTalk</span>
               </div>
             </div>
@@ -43,6 +59,7 @@ export default function HomePage() {
             </div>
 
             <div className="flex items-center space-x-4">
+              <ThemeToggle />
               <Link href="/login">
                 <Button variant="ghost" size="sm">
                   Log In

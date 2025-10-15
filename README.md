@@ -1,6 +1,26 @@
-# TeamTalk 🏆
 
-A comprehensive sports team communication and management platform that connects athletes, coaches, and team administrators in one unified space.
+
+![TeamTalk Logo](frontend/public/TeamTalk%20-%20Readme%20-%20Logo.svg)
+
+<div align="center">
+
+[![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![.NET](https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![AWS](https://img.shields.io/badge/AWS-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/)
+[![Stripe](https://img.shields.io/badge/Stripe-635BFF?style=for-the-badge&logo=stripe&logoColor=white)](https://stripe.com/)
+[![Google](https://img.shields.io/badge/Google_OAuth-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://developers.google.com/identity)
+[![Facebook](https://img.shields.io/badge/Facebook_OAuth-0866FF?style=for-the-badge&logo=facebook&logoColor=white)](https://developers.facebook.com/)
+[![Maileroo](https://img.shields.io/badge/Maileroo-F47A3D?style=for-the-badge&logo=maildotru&logoColor=white)](https://maileroo.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+
+</div>
+
+---
+
+<h1 align="center">TeamTalk</h1>
+
+<p align="center">A comprehensive sports team communication and management platform that connects athletes, coaches, and team administrators in one unified space.</p>
 
 ## ✨ Features
 

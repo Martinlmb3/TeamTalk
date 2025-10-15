@@ -6,6 +6,7 @@ import "./globals.css"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ThemeProvider } from "@/components/theme-provider"
+import { DynamicFavicon } from "@/components/dynamic-favicon"
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -19,9 +20,13 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "v0 App",
-  description: "Created with v0",
-  generator: "v0.app",
+  title: "TeamTalk - Sports Team Communication Platform",
+  description: "A comprehensive sports team communication and management platform that connects athletes, coaches, and team administrators in one unified space.",
+  icons: {
+    icon: "/TeamTalk - logo - lightMode.svg",
+    shortcut: "/TeamTalk - logo - lightMode.svg",
+    apple: "/TeamTalk - logo - lightMode.svg",
+  },
 }
 
 export default function RootLayout({
@@ -33,6 +38,7 @@ export default function RootLayout({
     <html lang="en" className={`${roboto.variable} ${jetbrainsMono.variable} antialiased`} suppressHydrationWarning>
       <body className="min-h-screen flex flex-col">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <DynamicFavicon />
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
