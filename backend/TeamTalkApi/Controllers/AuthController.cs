@@ -120,12 +120,14 @@ public class AuthController : ControllerBase
         var user = await _authService.GetUserByEmail(email);
         if (user == null)
         {
+            var password = Guid.NewGuid().ToString(); // Random password for OAuth users
             var signupRequest = new SignupRequestDto
             {
                 Email = email,
                 FirstName = firstName ?? "",
                 LastName = lastName ?? "",
-                Password = Guid.NewGuid().ToString(), // Random password for OAuth users
+                Password = password,
+                ConfirmPassword = password,
                 Role = "player"
             };
 
@@ -184,12 +186,14 @@ public class AuthController : ControllerBase
         var user = await _authService.GetUserByEmail(email);
         if (user == null)
         {
+            var password = Guid.NewGuid().ToString(); // Random password for OAuth users
             var signupRequest = new SignupRequestDto
             {
                 Email = email,
                 FirstName = firstName,
                 LastName = lastName,
-                Password = Guid.NewGuid().ToString(), // Random password for OAuth users
+                Password = password,
+                ConfirmPassword = password,
                 Role = "player"
             };
 

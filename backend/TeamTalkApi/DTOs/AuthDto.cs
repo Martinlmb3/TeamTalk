@@ -7,6 +7,7 @@ namespace TeamTalk.Core.DTOs.Auth;
 public class AuthResponseDto
 {
     public required string AccessToken { get; set; }
+    public required string RefreshToken { get; set; }
     public required Guid UserId { get; set; }
     public required string FirstName { get; set; }
     public required UserRole Role { get; set; }
@@ -32,6 +33,7 @@ public class SignupRequestDto
     [MinLength(2)]
     [MaxLength(50)]
     public required string FirstName { get; set; }
+
     [Required]
     [MinLength(2)]
     [MaxLength(50)]
@@ -49,4 +51,6 @@ public class SignupRequestDto
     [Compare("Password")]
     public required string ConfirmPassword { get; set; }
 
+    [Required]
+    public required string Role { get; set; }
 }

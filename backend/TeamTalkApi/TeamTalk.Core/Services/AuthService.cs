@@ -49,6 +49,7 @@ public class AuthService : IAuthUserService
         return new AuthResponseDto
         {
             AccessToken = accessToken,
+            RefreshToken = refreshToken,
             UserId = user.Id,
             FirstName = user.FirstName,
             Role = user.Role,
@@ -82,6 +83,7 @@ public class AuthService : IAuthUserService
         return new AuthResponseDto
         {
             AccessToken = accessToken,
+            RefreshToken = refreshToken,
             UserId = user.Id,
             FirstName = user.FirstName,
             Role = user.Role,

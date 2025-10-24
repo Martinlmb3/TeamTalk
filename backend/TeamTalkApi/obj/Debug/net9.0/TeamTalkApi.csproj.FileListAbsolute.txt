@@ -234,4 +234,7 @@ C:\Users\marti\Onedrive\documents\github\TeamTalk\backend\TeamTalkApi\bin\Debug\
 C:\Users\marti\Onedrive\documents\github\TeamTalk\backend\TeamTalkApi\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\marti\Onedrive\documents\github\TeamTalk\backend\TeamTalkApi\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\marti\OneDrive\Documents\GitHub\TeamTalk\backend\TeamTalkApi\bin\Debug\net9.0\login_response.json
-C:\Users\marti\OneDrive\Documents\GitHub\TeamTalk\backend\TeamTalkApi\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+c:\Users\marti\OneDrive\Documents\GitHub\TeamTalk\backend\TeamTalkApi\bin\Debug\net9.0\DotNetEnv.dll
+c:\Users\marti\OneDrive\Documents\GitHub\TeamTalk\backend\TeamTalkApi\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.Facebook.dll
+c:\Users\marti\OneDrive\Documents\GitHub\TeamTalk\backend\TeamTalkApi\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.Google.dll
+c:\Users\marti\OneDrive\Documents\GitHub\TeamTalk\backend\TeamTalkApi\bin\Debug\net9.0\Sprache.dll

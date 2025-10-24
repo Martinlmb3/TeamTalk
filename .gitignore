@@ -53,3 +53,6 @@ Thumbs.db
 OAUTH_SETUP_GUIDE.md
 NEXTJS_SUSPENSE_ERROR_GUIDE.md
 THEME_AWARE_LOGOS.md
+
+#Ignore vscode AI rules
+.github\instructions\codacy.instructions.md
