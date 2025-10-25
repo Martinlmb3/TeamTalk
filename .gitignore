@@ -25,6 +25,7 @@ backend/build/
 backend/dist/
 backend/*.log
 backend/.env*
+backend/**/.env*
 backend/coverage/
 backend/__snapshots__/
 backend/.cache/
