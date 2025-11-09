@@ -54,6 +54,24 @@ builder.Services.AddAuthentication(options =>
         ClockSkew = TimeSpan.Zero,
         NameClaimType = System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Email
     };
+
+    // Configure JWT for SignalR (WebSocket connections)
+    options.Events = new JwtBearerEvents
+    {
+        OnMessageReceived = context =>
+        {
+            var accessToken = context.Request.Query["access_token"];
+
+            // Check if the request is for SignalR
+            var path = context.HttpContext.Request.Path;
+            if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/chathub"))
+            {
+                context.Token = accessToken;
+            }
+
+            return Task.CompletedTask;
+        }
+    };
 })
 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
 .AddGoogle(GoogleDefaults.AuthenticationScheme, googleOptions =>
@@ -128,5 +146,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHub<ChatHub>("/chathub");
 
 app.Run();
