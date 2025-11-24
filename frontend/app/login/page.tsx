@@ -30,16 +30,37 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-muted flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
-        {/* Logo */}
-        <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <span className="text-primary-foreground font-bold text-2xl">TT</span>
+    <div className="min-h-screen bg-gradient-to-br from-background to-muted">
+      {/* Header */}
+      <header className="w-full py-4 px-6">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
+              <span className="text-primary-foreground font-bold text-lg">TT</span>
+            </div>
+            <span className="font-bold text-xl text-foreground">TeamTalk</span>
           </div>
-          <h1 className="text-2xl font-bold text-foreground">Welcome back to TeamTalk</h1>
-          <p className="text-muted-foreground mt-2">Sign in to your account to continue</p>
+          <nav className="flex items-center gap-6">
+            <Link href="#features" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              Features
+            </Link>
+            <Link href="#pricing" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              Pricing
+            </Link>
+            <Link href="#support" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              Support
+            </Link>
+          </nav>
         </div>
+      </header>
+
+      <div className="flex items-center justify-center p-4 pt-8">
+        <div className="w-full max-w-md">
+          {/* Logo */}
+          <div className="text-center mb-8">
+            <h1 className="text-2xl font-bold text-foreground">Welcome back to TeamTalk</h1>
+            <p className="text-muted-foreground mt-2">Sign in to your account to continue</p>
+          </div>
 
         {/* Login Form */}
         <Card>
@@ -160,6 +181,7 @@ export default function LoginPage() {
             </div>
           </CardContent>
         </Card>
+        </div>
       </div>
     </div>
   )

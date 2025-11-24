@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
-import { Users, Calendar, MapPin, Trophy } from "lucide-react"
+import { Users, Calendar, MapPin, Trophy, Upload } from "lucide-react"
 
 export default function ProfilePage() {
   const [isEditing, setIsEditing] = useState(false)
@@ -15,9 +15,12 @@ export default function ProfilePage() {
     name: "Sarah Miller",
     email: "sarah.miller@email.com",
     phone: "+1 (555) 123-4567",
-    position: "Team Captain",
+    city: "San Francisco",
+    country: "United States",
     joinDate: "January 2024",
     location: "San Francisco, CA",
+    authProvider: "Jwt", // Can be "Jwt", "Google", or "Facebook"
+    profilePicture: "/player-avatar.png",
   })
 
   const [passwordData, setPasswordData] = useState({
@@ -25,6 +28,9 @@ export default function ProfilePage() {
     new: "",
     confirm: "",
   })
+
+  const [selectedImage, setSelectedImage] = useState<File | null>(null)
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null)
 
   const userTeams = [
     { id: 1, name: "Team Titans", sport: "Basketball", role: "Captain", status: "Active" },
@@ -42,6 +48,27 @@ export default function ProfilePage() {
     // Mock password change
   }
 
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (file) {
+      setSelectedImage(file)
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        setPreviewUrl(reader.result as string)
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
+  const handleImageUpload = async () => {
+    if (!selectedImage) return
+    // TODO: Upload to Firebase Storage
+    // For now, just update the preview
+    if (previewUrl) {
+      setProfile({ ...profile, profilePicture: previewUrl })
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-4xl mx-auto p-6 space-y-6">
@@ -50,12 +77,11 @@ export default function ProfilePage() {
           <CardHeader className="pb-4">
             <div className="flex items-center space-x-4">
               <Avatar className="h-20 w-20">
-                <AvatarImage src="/player-avatar.png" alt="Profile" />
+                <AvatarImage src={previewUrl || profile.profilePicture} alt="Profile" />
                 <AvatarFallback className="text-lg">SM</AvatarFallback>
               </Avatar>
               <div className="flex-1">
                 <CardTitle className="text-2xl">{profile.name}</CardTitle>
-                <CardDescription className="text-base">{profile.position}</CardDescription>
                 <div className="flex items-center gap-4 mt-2 text-sm text-gray-600">
                   <div className="flex items-center gap-1">
                     <Calendar className="h-4 w-4" />
@@ -82,6 +108,34 @@ export default function ProfilePage() {
               <CardDescription>Update your personal information</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="profilePicture">Profile Picture</Label>
+                <div className="flex items-center gap-4">
+                  <Avatar className="h-16 w-16">
+                    <AvatarImage src={previewUrl || profile.profilePicture} alt="Profile Preview" />
+                    <AvatarFallback>SM</AvatarFallback>
+                  </Avatar>
+                  <div className="flex-1">
+                    <Input
+                      id="profilePicture"
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageChange}
+                      disabled={!isEditing}
+                      className="cursor-pointer"
+                    />
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Upload a profile picture (JPG, PNG, max 5MB)
+                    </p>
+                  </div>
+                  {selectedImage && isEditing && (
+                    <Button onClick={handleImageUpload} size="sm" variant="secondary">
+                      <Upload className="h-4 w-4 mr-2" />
+                      Upload
+                    </Button>
+                  )}
+                </div>
+              </div>
               <div className="space-y-2">
                 <Label htmlFor="name">Name</Label>
                 <Input
@@ -110,6 +164,24 @@ export default function ProfilePage() {
                   disabled={!isEditing}
                 />
               </div>
+              <div className="space-y-2">
+                <Label htmlFor="city">City</Label>
+                <Input
+                  id="city"
+                  value={profile.city}
+                  onChange={(e) => setProfile({ ...profile, city: e.target.value })}
+                  disabled={!isEditing}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="country">Country</Label>
+                <Input
+                  id="country"
+                  value={profile.country}
+                  onChange={(e) => setProfile({ ...profile, country: e.target.value })}
+                  disabled={!isEditing}
+                />
+              </div>
               {isEditing && (
                 <Button onClick={handleProfileUpdate} className="w-full">
                   Update Profile
@@ -118,84 +190,51 @@ export default function ProfilePage() {
             </CardContent>
           </Card>
 
-          {/* Password Change */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Change Password</CardTitle>
-              <CardDescription>Update your account password</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="current-password">Current Password</Label>
-                <Input
-                  id="current-password"
-                  type="password"
-                  value={passwordData.current}
-                  onChange={(e) => setPasswordData({ ...passwordData, current: e.target.value })}
-                  placeholder="Enter current password"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="new-password">New Password</Label>
-                <Input
-                  id="new-password"
-                  type="password"
-                  value={passwordData.new}
-                  onChange={(e) => setPasswordData({ ...passwordData, new: e.target.value })}
-                  placeholder="Enter new password"
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="confirm-password">Confirm New Password</Label>
-                <Input
-                  id="confirm-password"
-                  type="password"
-                  value={passwordData.confirm}
-                  onChange={(e) => setPasswordData({ ...passwordData, confirm: e.target.value })}
-                  placeholder="Confirm new password"
-                />
-              </div>
-              <Button onClick={handlePasswordChange} className="w-full">
-                Change Password
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Teams Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Users className="h-5 w-5" />
-              My Teams
-            </CardTitle>
-            <CardDescription>Teams you're currently part of</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              {userTeams.map((team) => (
-                <div key={team.id} className="flex items-center justify-between p-4 border rounded-lg">
-                  <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <Trophy className="h-5 w-5 text-blue-600" />
-                    </div>
-                    <div>
-                      <h3 className="font-medium">{team.name}</h3>
-                      <p className="text-sm text-gray-600">{team.sport}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Badge variant={team.role === "Captain" ? "default" : "secondary"}>{team.role}</Badge>
-                    <Badge variant={team.status === "Active" ? "default" : "outline"}>{team.status}</Badge>
-                  </div>
+          {/* Password Change - Only show for JWT authentication */}
+          {profile.authProvider === "Jwt" && (
+            <Card>
+              <CardHeader>
+                <CardTitle>Change Password</CardTitle>
+                <CardDescription>Update your account password</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="current-password">Current Password</Label>
+                  <Input
+                    id="current-password"
+                    type="password"
+                    value={passwordData.current}
+                    onChange={(e) => setPasswordData({ ...passwordData, current: e.target.value })}
+                    placeholder="Enter current password"
+                  />
                 </div>
-              ))}
-              <Button variant="outline" className="w-full bg-transparent">
-                Join a Team
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+                <div className="space-y-2">
+                  <Label htmlFor="new-password">New Password</Label>
+                  <Input
+                    id="new-password"
+                    type="password"
+                    value={passwordData.new}
+                    onChange={(e) => setPasswordData({ ...passwordData, new: e.target.value })}
+                    placeholder="Enter new password"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="confirm-password">Confirm New Password</Label>
+                  <Input
+                    id="confirm-password"
+                    type="password"
+                    value={passwordData.confirm}
+                    onChange={(e) => setPasswordData({ ...passwordData, confirm: e.target.value })}
+                    placeholder="Confirm new password"
+                  />
+                </div>
+                <Button onClick={handlePasswordChange} className="w-full">
+                  Change Password
+                </Button>
+              </CardContent>
+            </Card>
+          )}
+        </div>
       </div>
     </div>
   )

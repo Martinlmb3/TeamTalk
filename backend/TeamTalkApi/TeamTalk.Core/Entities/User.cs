@@ -26,6 +26,15 @@ public class User
     [Required]
     public UserRole Role { get; set; }
 
+    [Required]
+    public AuthProvider AuthProvider { get; set; } = AuthProvider.Jwt;
+
+    [MaxLength(100)]
+    public string? City { get; set; } = string.Empty;
+
+    [MaxLength(100)]
+    public string? Country { get; set; } = string.Empty;
+
     [MaxLength(100)]
     public string? ProfilePicture { get; set; } = string.Empty;
     

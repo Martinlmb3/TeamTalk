@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -119,10 +120,12 @@ export default function SchedulePage() {
               <Filter className="w-4 h-4 mr-2" />
               Filter
             </Button>
-            <Button className="bg-primary hover:bg-primary/90">
-              <Plus className="w-4 h-4 mr-2" />
-              Add Event
-            </Button>
+            <Link href="/schedule/add-event">
+              <Button className="bg-primary hover:bg-primary/90">
+                <Plus className="w-4 h-4 mr-2" />
+                Add Event
+              </Button>
+            </Link>
           </div>
         </div>
 

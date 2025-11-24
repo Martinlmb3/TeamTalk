@@ -7,6 +7,8 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ThemeProvider } from "@/components/theme-provider"
 import { DynamicFavicon } from "@/components/dynamic-favicon"
+import { QueryProvider } from "@/providers/QueryProvider"
+import { ProtectedRoute } from "@/components/ProtectedRoute"
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -37,12 +39,16 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${roboto.variable} ${jetbrainsMono.variable} antialiased`} suppressHydrationWarning>
       <body className="min-h-screen flex flex-col">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <DynamicFavicon />
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </ThemeProvider>
+        <QueryProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+            <DynamicFavicon />
+            <Header />
+            <ProtectedRoute>
+              <main className="flex-1">{children}</main>
+            </ProtectedRoute>
+            <Footer />
+          </ThemeProvider>
+        </QueryProvider>
       </body>
     </html>
   )

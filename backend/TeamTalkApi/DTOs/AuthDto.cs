@@ -3,7 +3,7 @@ using TeamTalkApi.TeamTalk.Core.Enums;
 
 namespace TeamTalk.Core.DTOs.Auth;
 
-// Response DTO - What you return after successful login/signup
+/*Result after successful login/signup*/
 public class AuthResponseDto
 {
     public required string AccessToken { get; set; }
@@ -14,7 +14,6 @@ public class AuthResponseDto
     public string? ProfilePicture { get; set; }
 }
 
-// Login Request DTO
 public class LoginRequestDto
 {
     [Required]
@@ -26,7 +25,6 @@ public class LoginRequestDto
     public required string Password { get; set; }
 }
 
-// Signup Request DTO
 public class SignupRequestDto
 {
     [Required]

@@ -14,6 +14,10 @@ public class Team
     [MaxLength(100)]
     public string? Description { get; set; }
 
+    [Required]
+    [MaxLength(100)]
+    public string Sports { get; set; } = string.Empty;
+
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     public string? Image { get; set; }
