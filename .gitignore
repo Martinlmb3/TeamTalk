@@ -50,13 +50,9 @@ Thumbs.db
 *.swp
 *.swo
 
-# Documentation guides
-OAUTH_SETUP_GUIDE.md
-NEXTJS_SUSPENSE_ERROR_GUIDE.md
-THEME_AWARE_LOGOS.md
-AUTHENTICATION_GUIDE.md
-ROLE_BASED_UI_GUIDE.md
-WEBSOCKET_MESSAGING_GUIDE.md
+# Documentation - Ignore all .md files except README.md
+*.md
+!README.md
 
 #Ignore vscode AI rules
 .github\instructions\codacy.instructions.md

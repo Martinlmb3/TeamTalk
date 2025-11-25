@@ -1,9 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using TeamTalkApi.TeamTalk.Core.Enums;
 
 namespace TeamTalkApi.DTOs
 {
-    public class UserDto
+    public class UpdateProfileDto
     {
         [Required]
         [MaxLength(50)]
@@ -27,16 +27,8 @@ namespace TeamTalkApi.DTOs
         public string Country { get; set; } = string.Empty;
 
         [MaxLength(100)]
-        public string? ProfilePicture { get; set; } = string.Empty;
+        public string? ProfilePicture { get; set; }
 
         public AuthProvider Provider { get; set; } = AuthProvider.Jwt;
-
-        [Required]
-        [MinLength(6)]
-        public required string Password { get; set; }
-
-        [Required]
-        [Compare("Password")]
-        public required string ConfirmPassword { get; set; }
     }
 }
