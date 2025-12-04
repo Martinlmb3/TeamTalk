@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using TeamTalkApi.DTOs;
 using TeamTalkApi.Infrastructure.Data;
@@ -35,8 +36,8 @@ namespace TeamTalkApi.Controllers
         {
             try
             {
-                // Get user ID from JWT token
-                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                // Get user ID from JWT token (Sub claim contains the user's GUID)
+                var userIdClaim = User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
                 if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
                 {
                     return Unauthorized(new { message = "Invalid user token" });
@@ -113,8 +114,8 @@ namespace TeamTalkApi.Controllers
         {
             try
             {
-                // Get user ID from JWT token
-                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                // Get user ID from JWT token (Sub claim contains the user's GUID)
+                var userIdClaim = User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
                 if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
                 {
                     return Unauthorized(new { message = "Invalid user token" });
@@ -189,8 +190,8 @@ namespace TeamTalkApi.Controllers
         {
             try
             {
-                // Get user ID from JWT token
-                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                // Get user ID from JWT token (Sub claim contains the user's GUID)
+                var userIdClaim = User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
                 if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
                 {
                     return Unauthorized(new { message = "Invalid user token" });

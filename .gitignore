@@ -54,5 +54,6 @@ Thumbs.db
 *.md
 !README.md
 
-#Ignore vscode AI rules
-.github\instructions\codacy.instructions.md
+# GitHub and editor instructions
+.github/instructions/
+.github\instructions\
