@@ -8,6 +8,7 @@ using System.Security.Claims;
 using TeamTalk.Core.DTOs.Auth;
 using TeamTalk.Core.Interfaces;
 using TeamTalk.Core.Entities;
+using TeamTalkApi.TeamTalk.Core.Enums;
 
 namespace TeamTalkApi.Controllers;
 
@@ -116,7 +117,6 @@ public class AuthController : ControllerBase
             return BadRequest(new { message = "Email not provided by Google" });
         }
 
-        // Check if user exists, if not create a new user
         var user = await _authService.GetUserByEmail(email);
         if (user == null)
         {
@@ -131,7 +131,7 @@ public class AuthController : ControllerBase
                 Role = "player"
             };
 
-            var result = await _authService.Register(signupRequest);
+            var result = await _authService.Register(signupRequest, AuthProvider.Google);
             if (result == null)
             {
                 return BadRequest(new { message = "Failed to create user" });
@@ -197,7 +197,7 @@ public class AuthController : ControllerBase
                 Role = "player"
             };
 
-            var result = await _authService.Register(signupRequest);
+            var result = await _authService.Register(signupRequest, AuthProvider.Facebook);
             if (result == null)
             {
                 return BadRequest(new { message = "Failed to create user" });

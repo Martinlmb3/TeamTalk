@@ -3,32 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\marti\\OneDrive\\Documents\\GitHub\\TeamTalk\\backend\\TeamTalkApi\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F9BC107C-4F6A-4F04-AD80-37686C4B2715}|TeamTalkApi.csproj|c:\\users\\marti\\onedrive\\documents\\github\\teamtalk\\backend\\teamtalkapi\\teamtalk.core\\interfaces\\ijwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9BC107C-4F6A-4F04-AD80-37686C4B2715}|TeamTalkApi.csproj|solutionrelative:teamtalk.core\\interfaces\\ijwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F9BC107C-4F6A-4F04-AD80-37686C4B2715}|TeamTalkApi.csproj|c:\\users\\marti\\onedrive\\documents\\github\\teamtalk\\backend\\teamtalkapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F9BC107C-4F6A-4F04-AD80-37686C4B2715}|TeamTalkApi.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F9BC107C-4F6A-4F04-AD80-37686C4B2715}|TeamTalkApi.csproj|c:\\users\\marti\\onedrive\\documents\\github\\teamtalk\\backend\\teamtalkapi\\teamtalk.core\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9BC107C-4F6A-4F04-AD80-37686C4B2715}|TeamTalkApi.csproj|solutionrelative:teamtalk.core\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F9BC107C-4F6A-4F04-AD80-37686C4B2715}|TeamTalkApi.csproj|c:\\users\\marti\\onedrive\\documents\\github\\teamtalk\\backend\\teamtalkapi\\dtos\\patchprofiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9BC107C-4F6A-4F04-AD80-37686C4B2715}|TeamTalkApi.csproj|solutionrelative:dtos\\patchprofiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F9BC107C-4F6A-4F04-AD80-37686C4B2715}|TeamTalkApi.csproj|c:\\users\\marti\\onedrive\\documents\\github\\teamtalk\\backend\\teamtalkapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F9BC107C-4F6A-4F04-AD80-37686C4B2715}|TeamTalkApi.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9BC107C-4F6A-4F04-AD80-37686C4B2715}|TeamTalkApi.csproj|c:\\users\\marti\\onedrive\\documents\\github\\teamtalk\\backend\\teamtalkapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{F9BC107C-4F6A-4F04-AD80-37686C4B2715}|TeamTalkApi.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9BC107C-4F6A-4F04-AD80-37686C4B2715}|TeamTalkApi.csproj|c:\\users\\marti\\onedrive\\documents\\github\\teamtalk\\backend\\teamtalkapi\\teamtalk.core\\entities\\team.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9BC107C-4F6A-4F04-AD80-37686C4B2715}|TeamTalkApi.csproj|solutionrelative:teamtalk.core\\entities\\team.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9BC107C-4F6A-4F04-AD80-37686C4B2715}|TeamTalkApi.csproj|c:\\users\\marti\\onedrive\\documents\\github\\teamtalk\\backend\\teamtalkapi\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9BC107C-4F6A-4F04-AD80-37686C4B2715}|TeamTalkApi.csproj|solutionrelative:hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9BC107C-4F6A-4F04-AD80-37686C4B2715}|TeamTalkApi.csproj|c:\\users\\marti\\onedrive\\documents\\github\\teamtalk\\backend\\teamtalkapi\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9BC107C-4F6A-4F04-AD80-37686C4B2715}|TeamTalkApi.csproj|solutionrelative:dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,86 +38,52 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PatchProfileDto.cs",
+              "DocumentMoniker": "C:\\Users\\marti\\OneDrive\\Documents\\GitHub\\TeamTalk\\backend\\TeamTalkApi\\DTOs\\PatchProfileDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\PatchProfileDto.cs",
+              "ToolTip": "C:\\Users\\marti\\OneDrive\\Documents\\GitHub\\TeamTalk\\backend\\TeamTalkApi\\DTOs\\PatchProfileDto.cs",
+              "RelativeToolTip": "DTOs\\PatchProfileDto.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-07T15:20:00.006Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "IJwtTokenService.cs",
+              "DocumentMoniker": "C:\\Users\\marti\\OneDrive\\Documents\\GitHub\\TeamTalk\\backend\\TeamTalkApi\\TeamTalk.Core\\Interfaces\\IJwtTokenService.cs",
+              "RelativeDocumentMoniker": "TeamTalk.Core\\Interfaces\\IJwtTokenService.cs",
+              "ToolTip": "C:\\Users\\marti\\OneDrive\\Documents\\GitHub\\TeamTalk\\backend\\TeamTalkApi\\TeamTalk.Core\\Interfaces\\IJwtTokenService.cs",
+              "RelativeToolTip": "TeamTalk.Core\\Interfaces\\IJwtTokenService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T22:06:55.364Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\marti\\OneDrive\\Documents\\GitHub\\TeamTalk\\backend\\TeamTalkApi\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "Controllers\\UserController.cs",
               "ToolTip": "C:\\Users\\marti\\OneDrive\\Documents\\GitHub\\TeamTalk\\backend\\TeamTalkApi\\Controllers\\UserController.cs",
               "RelativeToolTip": "Controllers\\UserController.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAGMAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAFYAAAAAAAAAAAAQwDgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-25T14:23:16.695Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Team.cs",
-              "DocumentMoniker": "C:\\Users\\marti\\OneDrive\\Documents\\GitHub\\TeamTalk\\backend\\TeamTalkApi\\TeamTalk.Core\\Entities\\Team.cs",
-              "RelativeDocumentMoniker": "TeamTalk.Core\\Entities\\Team.cs",
-              "ToolTip": "C:\\Users\\marti\\OneDrive\\Documents\\GitHub\\TeamTalk\\backend\\TeamTalkApi\\TeamTalk.Core\\Entities\\Team.cs",
-              "RelativeToolTip": "TeamTalk.Core\\Entities\\Team.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAYAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-21T13:51:49.954Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UserDto.cs",
-              "DocumentMoniker": "C:\\Users\\marti\\OneDrive\\Documents\\GitHub\\TeamTalk\\backend\\TeamTalkApi\\DTOs\\UserDto.cs",
-              "RelativeDocumentMoniker": "DTOs\\UserDto.cs",
-              "ToolTip": "C:\\Users\\marti\\OneDrive\\Documents\\GitHub\\TeamTalk\\backend\\TeamTalkApi\\DTOs\\UserDto.cs",
-              "RelativeToolTip": "DTOs\\UserDto.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAAwBcAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-21T09:26:05.689Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\marti\\OneDrive\\Documents\\GitHub\\TeamTalk\\backend\\TeamTalkApi\\TeamTalk.Core\\Entities\\User.cs",
-              "RelativeDocumentMoniker": "TeamTalk.Core\\Entities\\User.cs",
-              "ToolTip": "C:\\Users\\marti\\OneDrive\\Documents\\GitHub\\TeamTalk\\backend\\TeamTalkApi\\TeamTalk.Core\\Entities\\User.cs",
-              "RelativeToolTip": "TeamTalk.Core\\Entities\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-21T13:00:36.021Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ChatHub.cs",
-              "DocumentMoniker": "C:\\Users\\marti\\OneDrive\\Documents\\GitHub\\TeamTalk\\backend\\TeamTalkApi\\Hubs\\ChatHub.cs",
-              "RelativeDocumentMoniker": "Hubs\\ChatHub.cs",
-              "ToolTip": "C:\\Users\\marti\\OneDrive\\Documents\\GitHub\\TeamTalk\\backend\\TeamTalkApi\\Hubs\\ChatHub.cs",
-              "RelativeToolTip": "Hubs\\ChatHub.cs",
-              "ViewState": "AgIAAMUAAAAAAAAAAAAUwMkAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-24T02:15:55.745Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\marti\\OneDrive\\Documents\\GitHub\\TeamTalk\\backend\\TeamTalkApi\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Users\\marti\\OneDrive\\Documents\\GitHub\\TeamTalk\\backend\\TeamTalkApi\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAUAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-08T20:30:09.065Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\marti\\OneDrive\\Documents\\GitHub\\TeamTalk\\backend\\TeamTalkApi\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\marti\\OneDrive\\Documents\\GitHub\\TeamTalk\\backend\\TeamTalkApi\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAG8AAAAAAAAAAAAAAHMAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAK4AAAAAAAAAAAAAAHMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-02T17:53:02.201Z"
             }

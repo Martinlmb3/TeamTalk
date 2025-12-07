@@ -238,3 +238,4 @@ c:\Users\marti\OneDrive\Documents\GitHub\TeamTalk\backend\TeamTalkApi\bin\Debug\
 c:\Users\marti\OneDrive\Documents\GitHub\TeamTalk\backend\TeamTalkApi\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.Facebook.dll
 c:\Users\marti\OneDrive\Documents\GitHub\TeamTalk\backend\TeamTalkApi\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.Google.dll
 c:\Users\marti\OneDrive\Documents\GitHub\TeamTalk\backend\TeamTalkApi\bin\Debug\net9.0\Sprache.dll
+C:\Users\marti\OneDrive\Documents\GitHub\TeamTalk\backend\TeamTalkApi\bin\Debug\net9.0\Scalar.AspNetCore.dll

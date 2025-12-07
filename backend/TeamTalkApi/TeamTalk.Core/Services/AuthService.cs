@@ -59,6 +59,11 @@ public class AuthService : IAuthUserService
 
     public async Task<AuthResponseDto?> Register(SignupRequestDto signupDto)
     {
+        return await Register(signupDto, AuthProvider.Jwt);
+    }
+
+    public async Task<AuthResponseDto?> Register(SignupRequestDto signupDto, AuthProvider provider)
+    {
         var existingUser = await GetUserByEmail(signupDto.Email);
         if (existingUser != null)
         {
@@ -68,7 +73,15 @@ public class AuthService : IAuthUserService
         var user = signupDto.Adapt<User>();
         user.Id = Guid.NewGuid();
         user.PasswordHash = _passwordHasher.HashPassword(user, signupDto.Password);
-        user.Role = UserRole.User;
+
+        // Parse role from string to enum, default to Player if invalid
+        user.Role = Enum.TryParse<UserRole>(signupDto.Role, true, out var parsedRole)
+            ? parsedRole
+            : UserRole.Player;
+
+        // Set AuthProvider based on parameter (Jwt, Google, or Facebook)
+        user.AuthProvider = provider;
+
         user.CreatedAt = DateTime.UtcNow;
 
         _context.Users.Add(user);
