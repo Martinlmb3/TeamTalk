@@ -2,6 +2,8 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+
+export const dynamic = 'force-dynamic'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -49,6 +51,11 @@ export default function AddEventPage() {
     setLoading(true)
 
     try {
+      // Check if Firebase is initialized
+      if (!db) {
+        throw new Error("Firebase is not configured. Please check your environment variables.")
+      }
+
       // Add event to Firebase
       const eventsRef = collection(db, "events")
       await addDoc(eventsRef, {
@@ -69,7 +76,7 @@ export default function AddEventPage() {
       console.error("Error creating event:", error)
       toast({
         title: "Error",
-        description: "Failed to create event. Please try again.",
+        description: error instanceof Error ? error.message : "Failed to create event. Please try again.",
         variant: "destructive",
       })
     } finally {
