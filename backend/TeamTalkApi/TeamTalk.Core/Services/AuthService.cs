@@ -70,19 +70,24 @@ public class AuthService : IAuthUserService
             return null;
         }
 
-        var user = signupDto.Adapt<User>();
-        user.Id = Guid.NewGuid();
-        user.PasswordHash = _passwordHasher.HashPassword(user, signupDto.Password);
-
-        // Parse role from string to enum, default to Player if invalid
-        user.Role = Enum.TryParse<UserRole>(signupDto.Role, true, out var parsedRole)
+        // Parse role from string to enum, default to Player if invalid or not provided
+        var userRole = !string.IsNullOrEmpty(signupDto.Role) && Enum.TryParse<UserRole>(signupDto.Role, true, out var parsedRole)
             ? parsedRole
             : UserRole.Player;
 
-        // Set AuthProvider based on parameter (Jwt, Google, or Facebook)
-        user.AuthProvider = provider;
+        // Create user explicitly instead of using Adapt
+        var user = new User
+        {
+            Id = Guid.NewGuid(),
+            FirstName = signupDto.FirstName,
+            LastName = signupDto.LastName,
+            Email = signupDto.Email,
+            Role = userRole,
+            AuthProvider = provider,
+            CreatedAt = DateTime.UtcNow
+        };
 
-        user.CreatedAt = DateTime.UtcNow;
+        user.PasswordHash = _passwordHasher.HashPassword(user, signupDto.Password);
 
         _context.Users.Add(user);
         await _context.SaveChangesAsync();

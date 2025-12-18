@@ -2,13 +2,14 @@
 
 import { useEffect } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
-import { useAuth } from '@/hooks/useAuth'
+import { useAuthStore } from '@/stores/authStore'
 
 // Public routes that don't require authentication
-const PUBLIC_ROUTES = ['/', '/features', '/pricing', '/support', '/login', '/signup']
+const PUBLIC_ROUTES = ['/', '/features', '/pricing', '/support', '/login', '/signup', '/auth']
 
 export function ProtectedRoute({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated, isLoading } = useAuth()
+  const isAuthenticated = useAuthStore(state => state.isAuthenticated)
+  const isLoading = useAuthStore(state => state.isLoading)
   const router = useRouter()
   const pathname = usePathname()
 

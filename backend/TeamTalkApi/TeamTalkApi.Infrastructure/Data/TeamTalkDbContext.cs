@@ -32,6 +32,10 @@ public class TeamTalkDbContext : DbContext
         modelBuilder.Entity<User>(entity =>
         {
             entity.HasIndex(e => e.Email).IsUnique();
+
+            // Configure enum conversions
+            entity.Property(e => e.AuthProvider)
+                .HasConversion<int>();
         });
 
 

@@ -49,6 +49,6 @@ public class SignupRequestDto
     [Compare("Password")]
     public required string ConfirmPassword { get; set; }
 
-    [Required]
-    public required string Role { get; set; }
+    // Role is now optional - users will select it after registration
+    public string? Role { get; set; }
 }

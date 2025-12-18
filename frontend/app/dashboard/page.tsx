@@ -111,10 +111,12 @@ export default function DashboardPage() {
         {/* Teams Section */}
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold text-foreground">Your Teams</h2>
-          <Button className="bg-primary hover:bg-primary/90">
-            <Plus className="w-4 h-4 mr-2" />
-            Create Team
-          </Button>
+          <Link href="/team/create">
+            <Button className="bg-primary hover:bg-primary/90">
+              <Plus className="w-4 h-4 mr-2" />
+              Create Team
+            </Button>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -175,10 +177,12 @@ export default function DashboardPage() {
               <Users className="w-16 h-16 text-gray-400 mx-auto mb-4" />
               <h3 className="text-xl font-semibold text-gray-900 mb-2">No teams yet</h3>
               <p className="text-gray-600 mb-6">Create your first team to start communicating with your players.</p>
-              <Button className="bg-blue-600 hover:bg-blue-700">
-                <Plus className="w-4 h-4 mr-2" />
-                Create Your First Team
-              </Button>
+              <Link href="/team/create">
+                <Button className="bg-blue-600 hover:bg-blue-700">
+                  <Plus className="w-4 h-4 mr-2" />
+                  Create Your First Team
+                </Button>
+              </Link>
             </CardContent>
           </Card>
         )}

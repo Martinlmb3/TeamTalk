@@ -117,31 +117,31 @@ export default function PricingPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-muted">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-700 dark:bg-slate-800">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-foreground mb-12">Frequently Asked Questions</h2>
+          <h2 className="text-3xl font-bold text-center text-white mb-12">Frequently Asked Questions</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-lg font-semibold text-foreground mb-2">Can I change plans anytime?</h3>
-              <p className="text-muted-foreground">
+              <h3 className="text-lg font-semibold text-white mb-2">Can I change plans anytime?</h3>
+              <p className="text-slate-300">
                 Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately.
               </p>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-foreground mb-2">Is there a free trial?</h3>
-              <p className="text-muted-foreground">
+              <h3 className="text-lg font-semibold text-white mb-2">Is there a free trial?</h3>
+              <p className="text-slate-300">
                 All plans come with a 14-day free trial. No credit card required to get started.
               </p>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-foreground mb-2">What payment methods do you accept?</h3>
-              <p className="text-muted-foreground">
+              <h3 className="text-lg font-semibold text-white mb-2">What payment methods do you accept?</h3>
+              <p className="text-slate-300">
                 We accept all major credit cards, PayPal, and bank transfers for Enterprise plans.
               </p>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-foreground mb-2">Do you offer discounts for annual billing?</h3>
-              <p className="text-muted-foreground">Yes, save 20% when you choose annual billing on any plan.</p>
+              <h3 className="text-lg font-semibold text-white mb-2">Do you offer discounts for annual billing?</h3>
+              <p className="text-slate-300">Yes, save 20% when you choose annual billing on any plan.</p>
             </div>
           </div>
         </div>

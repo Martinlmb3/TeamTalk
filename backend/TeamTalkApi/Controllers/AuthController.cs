@@ -56,7 +56,19 @@ public class AuthController : ControllerBase
             return BadRequest(new { message = "User with this email already exists" });
         }
 
-        return CreatedAtAction(nameof(Login), result);
+        // Add requiresRole flag if role was not provided during registration
+        var response = new
+        {
+            result.AccessToken,
+            result.RefreshToken,
+            result.UserId,
+            result.FirstName,
+            result.Role,
+            result.ProfilePicture,
+            RequiresRole = string.IsNullOrEmpty(request.Role)
+        };
+
+        return CreatedAtAction(nameof(Login), response);
     }
 
     [Authorize]
@@ -128,7 +140,7 @@ public class AuthController : ControllerBase
                 LastName = lastName ?? "",
                 Password = password,
                 ConfirmPassword = password,
-                Role = "player"
+                Role = null // Don't set role - user will select it
             };
 
             var result = await _authService.Register(signupRequest, AuthProvider.Google);
@@ -137,15 +149,19 @@ public class AuthController : ControllerBase
                 return BadRequest(new { message = "Failed to create user" });
             }
 
-            // Redirect to frontend with token
-            return Redirect($"{Request.Scheme}://{Request.Host}/auth/callback?token={result.AccessToken}&refreshToken={result.RefreshToken}");
+            // Redirect to role selection page for new users
+            return Redirect($"{Request.Scheme}://{Request.Host}/auth/callback?token={result.AccessToken}&refreshToken={result.RefreshToken}&requiresRole=true");
         }
 
         // Generate JWT token for existing user
         var token = _jwtTokenService.GenerateAccessToken(user);
         var refreshToken = _jwtTokenService.GenerateRefreshToken();
 
-        return Redirect($"{Request.Scheme}://{Request.Host}/auth/callback?token={token}&refreshToken={refreshToken}");
+        // Check if existing user needs to select a role
+        var requiresRole = user.Role == UserRole.Player && string.IsNullOrEmpty(user.City); // Simple heuristic to check if role was default-assigned
+        var roleParam = requiresRole ? "&requiresRole=true" : "";
+
+        return Redirect($"{Request.Scheme}://{Request.Host}/auth/callback?token={token}&refreshToken={refreshToken}{roleParam}");
     }
 
     [HttpGet("facebook")]
@@ -194,7 +210,7 @@ public class AuthController : ControllerBase
                 LastName = lastName,
                 Password = password,
                 ConfirmPassword = password,
-                Role = "player"
+                Role = null // Don't set role - user will select it
             };
 
             var result = await _authService.Register(signupRequest, AuthProvider.Facebook);
@@ -203,14 +219,18 @@ public class AuthController : ControllerBase
                 return BadRequest(new { message = "Failed to create user" });
             }
 
-            // Redirect to frontend with token
-            return Redirect($"{Request.Scheme}://{Request.Host}/auth/callback?token={result.AccessToken}&refreshToken={result.RefreshToken}");
+            // Redirect to role selection page for new users
+            return Redirect($"{Request.Scheme}://{Request.Host}/auth/callback?token={result.AccessToken}&refreshToken={result.RefreshToken}&requiresRole=true");
         }
 
         // Generate JWT token for existing user
         var token = _jwtTokenService.GenerateAccessToken(user);
         var refreshToken = _jwtTokenService.GenerateRefreshToken();
 
-        return Redirect($"{Request.Scheme}://{Request.Host}/auth/callback?token={token}&refreshToken={refreshToken}");
+        // Check if existing user needs to select a role
+        var requiresRole = user.Role == UserRole.Player && string.IsNullOrEmpty(user.City); // Simple heuristic to check if role was default-assigned
+        var roleParam = requiresRole ? "&requiresRole=true" : "";
+
+        return Redirect($"{Request.Scheme}://{Request.Host}/auth/callback?token={token}&refreshToken={refreshToken}{roleParam}");
     }
 }

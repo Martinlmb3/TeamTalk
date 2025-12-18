@@ -10,14 +10,21 @@ function AuthCallback() {
   useEffect(() => {
     const token = searchParams.get("token")
     const refreshToken = searchParams.get("refreshToken")
+    const requiresRole = searchParams.get("requiresRole")
 
     if (token && refreshToken) {
       // Store tokens in localStorage
       localStorage.setItem("accessToken", token)
       localStorage.setItem("refreshToken", refreshToken)
 
-      // Redirect to dashboard
-      router.push("/dashboard")
+      // Check if user needs to select a role
+      if (requiresRole === "true") {
+        // Redirect to role selection page
+        router.push("/select-role")
+      } else {
+        // Redirect to dashboard
+        router.push("/dashboard")
+      }
     } else {
       // If no tokens, redirect to login with error
       router.push("/login?error=auth_failed")

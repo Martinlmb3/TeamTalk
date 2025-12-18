@@ -170,9 +170,11 @@ if (app.Environment.IsDevelopment())
     // Add Scalar API documentation
     app.MapScalarApiReference(options =>
     {
-        options.Title = "TeamTalk API";
-        options.Theme = ScalarTheme.Purple;
-        options.ShowSidebar = true;
+        options
+            .WithTitle("TeamTalk API")
+            .WithTheme(ScalarTheme.Purple)
+            .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient)
+            .WithOpenApiRoutePattern("/swagger/v1/swagger.json");
     });
 }
 

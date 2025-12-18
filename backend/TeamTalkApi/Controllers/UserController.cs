@@ -144,5 +144,43 @@ namespace TeamTalkApi.Controllers
                 return StatusCode(500, new { message = "An error occurred while retrieving the profile" });
             }
         }
+
+        /// <summary>
+        /// Update user role (for users who registered without selecting a role)
+        /// </summary>
+        [HttpPatch("role")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> UpdateRole([FromBody] UpdateRoleDto updateRoleDto)
+        {
+            try
+            {
+                var userIdClaim = User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
+                if (string.IsNullOrEmpty(userIdClaim) || !Guid.TryParse(userIdClaim, out var userId))
+                {
+                    return Unauthorized(new { message = "Invalid user token" });
+                }
+
+                var user = await _context.Users.FindAsync(userId);
+                if (user == null)
+                {
+                    return NotFound(new { message = "User not found" });
+                }
+
+                user.Role = updateRoleDto.Role;
+                await _context.SaveChangesAsync();
+
+                _logger.LogInformation("User {UserId} updated their role to {Role}", userId, user.Role);
+
+                return Ok(new { message = "Role updated successfully", role = user.Role.ToString() });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error updating role for user");
+                return StatusCode(500, new { message = "An error occurred while updating the role" });
+            }
+        }
     }
 }
