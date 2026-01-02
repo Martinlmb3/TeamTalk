@@ -100,7 +100,35 @@ builder.Services.AddAuthentication(options =>
     facebookOptions.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
 });
 
-builder.Services.AddAuthorization();
+// Add Authorization with role-based policies
+builder.Services.AddAuthorization(options =>
+{
+    // Admin-only policy
+    options.AddPolicy("AdminOnly", policy =>
+        policy.RequireRole("Admin"));
+
+    // Coach or Admin policy
+    options.AddPolicy("CoachOrAdmin", policy =>
+        policy.RequireRole("Admin", "Coach"));
+
+    // Any role except Player
+    options.AddPolicy("NotPlayer", policy =>
+        policy.RequireRole("Admin", "Coach", "Captain"));
+
+    // Team management policy (Admin, Coach, or Captain)
+    options.AddPolicy("TeamManagement", policy =>
+    {
+        policy.RequireAuthenticatedUser();
+        policy.RequireRole("Admin", "Coach", "Captain");
+    });
+
+    // Player management policy (Admin or Coach only)
+    options.AddPolicy("PlayerManagement", policy =>
+    {
+        policy.RequireAuthenticatedUser();
+        policy.RequireRole("Admin", "Coach");
+    });
+});
 
 // Add CORS
 builder.Services.AddCors(options =>

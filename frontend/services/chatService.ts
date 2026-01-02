@@ -24,17 +24,11 @@ class ChatService {
       return;
     }
 
-    // Get access token from localStorage
-    const accessToken = localStorage.getItem("accessToken");
-    if (!accessToken) {
-      throw new Error("No access token found. Please login first.");
-    }
-
     this.connection = new signalR.HubConnectionBuilder()
       .withUrl("http://localhost:5000/hubs/chat", {
-        accessTokenFactory: () => accessToken,
         transport: signalR.HttpTransportType.WebSockets,
         skipNegotiation: true,
+        withCredentials: true, // Enable sending cookies
       })
       .withAutomaticReconnect({
         nextRetryDelayInMilliseconds: (retryContext) => {

@@ -6,7 +6,7 @@ export interface AuthResponse {
   refreshToken: string;
   userId: string;
   firstName: string;
-  role: string;
+  role: number;
   profilePicture?: string;
   requiresRole?: boolean;
 }
@@ -40,8 +40,7 @@ export const authApi = {
     return response.data;
   },
 
-  logout: () => {
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("refreshToken");
+  logout: async (): Promise<void> => {
+    await axiosInstance.post("/api/auth/logout");
   },
 };

@@ -6,12 +6,14 @@ import type { LoginFormData } from '@/schemas/auth.schema'
 interface AuthState {
   // State
   user: UserProfile | null
+  accessToken: string | null
   isAuthenticated: boolean
   isLoading: boolean
   error: string | null
 
   // Actions
   setUser: (user: UserProfile | null) => void
+  setAccessToken: (token: string | null) => void
   setLoading: (loading: boolean) => void
   setError: (error: string | null) => void
   login: (credentials: LoginFormData) => Promise<void>
@@ -25,6 +27,7 @@ export const useAuthStore = create<AuthState>()(
     (set, get) => ({
       // Initial state
       user: null,
+      accessToken: null,
       isAuthenticated: false,
       isLoading: false,
       error: null,
@@ -36,6 +39,11 @@ export const useAuthStore = create<AuthState>()(
           isAuthenticated: !!user,
           error: null,
         })
+      },
+
+      // Set access token
+      setAccessToken: (token) => {
+        set({ accessToken: token })
       },
 
       // Set loading state
@@ -53,11 +61,11 @@ export const useAuthStore = create<AuthState>()(
         set({ isLoading: true, error: null })
 
         try {
+          // Login and get tokens
           const response = await authApi.login(credentials)
 
-          // Store tokens
-          localStorage.setItem('accessToken', response.accessToken)
-          localStorage.setItem('refreshToken', response.refreshToken)
+          // Store access token
+          set({ accessToken: response.accessToken })
 
           // Fetch full profile
           await get().fetchProfile()
@@ -69,6 +77,7 @@ export const useAuthStore = create<AuthState>()(
             isLoading: false,
             error: errorMessage,
             user: null,
+            accessToken: null,
             isAuthenticated: false,
           })
           throw error
@@ -77,13 +86,6 @@ export const useAuthStore = create<AuthState>()(
 
       // Fetch user profile
       fetchProfile: async () => {
-        const token = typeof window !== 'undefined' ? localStorage.getItem('accessToken') : null
-
-        if (!token) {
-          set({ user: null, isAuthenticated: false, isLoading: false })
-          return
-        }
-
         set({ isLoading: true })
 
         try {
@@ -96,12 +98,6 @@ export const useAuthStore = create<AuthState>()(
           })
         } catch (error: any) {
           console.error('Failed to fetch profile:', error)
-
-          // Clear invalid tokens
-          if (typeof window !== 'undefined') {
-            localStorage.removeItem('accessToken')
-            localStorage.removeItem('refreshToken')
-          }
 
           set({
             user: null,
@@ -117,6 +113,7 @@ export const useAuthStore = create<AuthState>()(
         authApi.logout()
         set({
           user: null,
+          accessToken: null,
           isAuthenticated: false,
           isLoading: false,
           error: null,
@@ -128,6 +125,7 @@ export const useAuthStore = create<AuthState>()(
         authApi.logout()
         set({
           user: null,
+          accessToken: null,
           isAuthenticated: false,
           isLoading: false,
           error: null,
@@ -136,9 +134,10 @@ export const useAuthStore = create<AuthState>()(
     }),
     {
       name: 'auth-storage',
-      // Only persist user and isAuthenticated, not loading/error states
+      // Persist user, accessToken, and isAuthenticated
       partialize: (state) => ({
         user: state.user,
+        accessToken: state.accessToken,
         isAuthenticated: state.isAuthenticated,
       }),
     }
@@ -147,9 +146,17 @@ export const useAuthStore = create<AuthState>()(
 
 // Initialize auth state on app load
 if (typeof window !== 'undefined') {
-  const token = localStorage.getItem('accessToken')
-  if (token) {
-    // Fetch profile to validate token
-    useAuthStore.getState().fetchProfile()
+  // Only fetch profile if user was previously authenticated (has data in localStorage)
+  const storedState = localStorage.getItem('auth-storage')
+  if (storedState) {
+    try {
+      const parsed = JSON.parse(storedState)
+      if (parsed?.state?.isAuthenticated) {
+        // User was authenticated, verify session is still valid
+        useAuthStore.getState().fetchProfile()
+      }
+    } catch (e) {
+      console.error('Failed to parse auth storage:', e)
+    }
   }
 }

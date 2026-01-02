@@ -32,10 +32,6 @@ export default function SignupPage() {
   const signupMutation = useMutation({
     mutationFn: authApi.register,
     onSuccess: (data) => {
-      // Store tokens
-      localStorage.setItem("accessToken", data.accessToken)
-      localStorage.setItem("refreshToken", data.refreshToken)
-
       toast({
         title: "Success",
         description: "Account created successfully",

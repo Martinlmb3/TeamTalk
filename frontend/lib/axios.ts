@@ -5,23 +5,31 @@ const axiosInstance = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
+  withCredentials: true, // Enable sending cookies with requests
 });
 
-// Request interceptor to add auth token
+// Request interceptor to add access token to headers
 axiosInstance.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("accessToken");
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+    // Get access token from localStorage
+    const authStorage = localStorage.getItem('auth-storage');
+    if (authStorage) {
+      try {
+        const parsed = JSON.parse(authStorage);
+        const accessToken = parsed?.state?.accessToken;
+        if (accessToken) {
+          config.headers.Authorization = `Bearer ${accessToken}`;
+        }
+      } catch (error) {
+        console.error('Failed to parse auth storage:', error);
+      }
     }
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
 
-// Response interceptor to handle token refresh
+// Response interceptor to handle authentication errors
 axiosInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
@@ -32,27 +40,17 @@ axiosInstance.interceptors.response.use(
       originalRequest._retry = true;
 
       try {
-        const refreshToken = localStorage.getItem("refreshToken");
-        if (!refreshToken) {
-          throw new Error("No refresh token available");
-        }
-
-        // Try to refresh the token
-        const response = await axios.post(
+        // Try to refresh the token - backend will use refresh token from HTTP-only cookie
+        await axios.post(
           `${process.env.NEXT_PUBLIC_API_URL}/api/auth/refresh`,
-          { refreshToken }
+          {},
+          { withCredentials: true }
         );
 
-        const { accessToken } = response.data;
-        localStorage.setItem("accessToken", accessToken);
-
-        // Retry the original request with new token
-        originalRequest.headers.Authorization = `Bearer ${accessToken}`;
+        // Retry the original request - new access token cookie is now set
         return axiosInstance(originalRequest);
       } catch (refreshError) {
-        // Refresh failed, clear tokens and redirect to login
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("refreshToken");
+        // Refresh failed, redirect to login
         window.location.href = "/login";
         return Promise.reject(refreshError);
       }

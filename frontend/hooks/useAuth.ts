@@ -6,18 +6,10 @@ import { authApi, type UserProfile } from '@/lib/api/auth'
 
 // Fetch current user from API
 async function fetchUser(): Promise<UserProfile | null> {
-  const token = typeof window !== 'undefined' ? localStorage.getItem('accessToken') : null
-  if (!token) return null
-
   try {
     return await authApi.getProfile()
   } catch (error) {
     console.error('Failed to fetch user:', error)
-    // Token is invalid, remove it
-    if (typeof window !== 'undefined') {
-      localStorage.removeItem('accessToken')
-      localStorage.removeItem('refreshToken')
-    }
     return null
   }
 }
@@ -34,14 +26,13 @@ export function useAuth() {
   } = useQuery({
     queryKey: ['user'],
     queryFn: fetchUser,
-    enabled: typeof window !== 'undefined' && !!localStorage.getItem('accessToken'), // Only run if token exists
     retry: false,
     staleTime: 5 * 60 * 1000, // 5 minutes
   })
 
   // Logout function
-  const logout = () => {
-    authApi.logout()
+  const logout = async () => {
+    await authApi.logout()
     queryClient.setQueryData(['user'], null)
     queryClient.clear()
     router.push('/login')
@@ -53,6 +44,5 @@ export function useAuth() {
     isAuthenticated: !!user,
     error,
     logout,
-    token: typeof window !== 'undefined' ? localStorage.getItem('accessToken') : null,
   }
 }

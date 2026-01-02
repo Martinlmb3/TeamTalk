@@ -20,9 +20,15 @@ public class Team
 
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
+    public DateTime? UpdatedAt { get; set; }
+
     public string? Image { get; set; }
 
+    // Foreign Keys
+    public Guid CoachId { get; set; }
+
     // Navigation properties
+    public virtual User Coach { get; set; } = null!;
     public virtual ICollection<UserTeam> UserTeams { get; set; } = new List<UserTeam>();
     public virtual ICollection<Lobby> Lobbies { get; set; } = new List<Lobby>();
     public virtual ICollection<File> Files { get; set; } = new List<File>();

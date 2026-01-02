@@ -32,24 +32,12 @@ export default function SelectRolePage() {
   const onSubmit = async (data: SelectRoleFormData) => {
     setIsLoading(true);
     try {
-      const token = localStorage.getItem("accessToken");
-
-      if (!token) {
-        toast({
-          title: "Authentication Error",
-          description: "You must be logged in to select a role",
-          variant: "destructive",
-        });
-        router.push("/login");
-        return;
-      }
-
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/user/role`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
         },
+        credentials: "include", // Send cookies with request
         body: JSON.stringify({ role: data.role }),
       });
 

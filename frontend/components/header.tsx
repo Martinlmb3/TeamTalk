@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { useAuthStore } from "@/stores/authStore"
 import { useThemeStore } from "@/stores/themeStore"
+import { useRoleCheck } from "@/hooks/useRoleCheck"
 
 export function Header() {
   const pathname = usePathname()
@@ -20,14 +21,14 @@ export function Header() {
   const resolvedTheme = useThemeStore(state => state.resolvedTheme)
   const mounted = useThemeStore(state => state.mounted)
 
+  // Role check for admin access
+  const { isAdmin } = useRoleCheck()
+
   // Don't show header on landing page
   if (pathname === "/") return null
 
-  const isAdmin = pathname.startsWith("/admin")
+  const isAdminPage = pathname.startsWith("/admin")
   const isAuth = pathname === "/login" || pathname === "/signup"
-  const isMessages = pathname.startsWith("/messages")
-  const isSchedule = pathname.startsWith("/schedule")
-  const isFiles = pathname.startsWith("/files")
 
   const logoSrc = resolvedTheme === "dark"
     ? "/TeamTalk - logo - darkMode.svg"
@@ -55,7 +56,7 @@ export function Header() {
 
           {!isAuth && (
             <nav className="hidden md:flex items-center space-x-8">
-              {isAdmin ? (
+              {isAdminPage ? (
                 <>
                   <Link
                     href="/admin"
@@ -80,19 +81,19 @@ export function Header() {
                 <>
                   <Link
                     href="/messages"
-                    className={`text-sm font-medium ${isMessages ? "text-primary" : "text-muted-foreground hover:text-primary"}`}
+                    className={`text-sm font-medium ${pathname.startsWith("/messages") ? "text-primary" : "text-muted-foreground hover:text-primary"}`}
                   >
                     Messages
                   </Link>
                   <Link
                     href="/schedule"
-                    className={`text-sm font-medium ${isSchedule ? "text-primary" : "text-muted-foreground hover:text-primary"}`}
+                    className={`text-sm font-medium ${pathname.startsWith("/schedule") ? "text-primary" : "text-muted-foreground hover:text-primary"}`}
                   >
                     Schedule
                   </Link>
                   <Link
                     href="/files"
-                    className={`text-sm font-medium ${isFiles ? "text-primary" : "text-muted-foreground hover:text-primary"}`}
+                    className={`text-sm font-medium ${pathname.startsWith("/files") ? "text-primary" : "text-muted-foreground hover:text-primary"}`}
                   >
                     Files
                   </Link>
@@ -108,9 +109,11 @@ export function Header() {
                   >
                     Support
                   </Link>
-                  <Link href="/admin" className="text-sm font-medium text-muted-foreground hover:text-primary">
-                    Admin
-                  </Link>
+                  {isAdmin && (
+                    <Link href="/admin" className="text-sm font-medium text-muted-foreground hover:text-primary">
+                      Admin
+                    </Link>
+                  )}
                 </>
               )}
             </nav>

@@ -38,6 +38,14 @@ public class TeamTalkDbContext : DbContext
                 .HasConversion<int>();
         });
 
+        modelBuilder.Entity<Team>(entity =>
+        {
+            // Configure Team-Coach relationship
+            entity.HasOne(t => t.Coach)
+                  .WithMany()
+                  .HasForeignKey(t => t.CoachId)
+                  .OnDelete(DeleteBehavior.Restrict);
+        });
 
         modelBuilder.Entity<UserTeam>(entity =>
         {
