@@ -12,19 +12,13 @@ import { useRoleCheck } from "@/hooks/useRoleCheck"
 
 export function Header() {
   const pathname = usePathname()
-
-  // Zustand stores - optimized selectors
   const user = useAuthStore(state => state.user)
   const isAuthenticated = useAuthStore(state => state.isAuthenticated)
   const logout = useAuthStore(state => state.logout)
-
   const resolvedTheme = useThemeStore(state => state.resolvedTheme)
   const mounted = useThemeStore(state => state.mounted)
-
-  // Role check for admin access
   const { isAdmin } = useRoleCheck()
-
-  // Don't show header on landing page
+  
   if (pathname === "/") return null
 
   const isAdminPage = pathname.startsWith("/admin")
