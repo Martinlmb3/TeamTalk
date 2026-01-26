@@ -6,7 +6,10 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "generate-api": "nswag run nswag.json",
+    "generate-api:watch": "nswag run nswag.json && echo 'Types generated successfully!'",
+    "prebuild": "npm run generate-api || echo 'Warning: API generation failed, using existing types'"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

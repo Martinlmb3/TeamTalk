@@ -1,0 +1,3 @@
+# This directory contains auto-generated TypeScript types from the backend OpenAPI specification.
+# Run `npm run generate-api` to regenerate these types.
+# Do not edit these files manually - they will be overwritten.

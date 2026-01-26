@@ -142,8 +142,12 @@ builder.Services.AddCors(options =>
     });
 });
 
-// Add controllers
-builder.Services.AddControllers();
+// Add controllers with JSON options for proper enum serialization
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+    });
 
 // Add OpenAPI/Swagger
 builder.Services.AddOpenApi();
