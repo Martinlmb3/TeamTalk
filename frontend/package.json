@@ -12,6 +12,7 @@
     "prebuild": "npm run generate-api || echo 'Warning: API generation failed, using existing types'"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.981.0",
     "@hookform/resolvers": "^3.10.0",
     "@microsoft/signalr": "^9.0.6",
     "@radix-ui/react-accordion": "1.2.2",
